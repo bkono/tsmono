@@ -1,0 +1,21 @@
+{
+  "name": "@tsmono/core",
+  "version": "0.0.1",
+  "main": "dist/index",
+  "types": "dist/index",
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "scripts": {
+    "clean": "rimraf dist && rm -rf tsconfig.tsbuildinfo",
+    "compile": "npx tsc --build",
+    "build": "yarn clean && yarn compile",
+    "prepack": "yarn build",
+    "test": "echo 'no test'",
+    "lint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings=0"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.5"
+  }
+}

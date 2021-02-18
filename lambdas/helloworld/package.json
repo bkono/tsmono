@@ -1,0 +1,24 @@
+{
+  "name": "helloworld",
+  "version": "0.0.1",
+  "main": "dist/index",
+  "types": "dist/index",
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "scripts": {
+    "clean": "rimraf dist lambda.out && rm -rf tsconfig.tsbuildinfo",
+    "compile": "npx tsc --build",
+    "build": "yarn clean && yarn compile",
+    "package": "l2l -i dist -o lambda.out",
+    "test": "echo 'no test'",
+    "lint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings=0"
+  },
+  "dependencies": {
+    "@tsmono/core": "^0.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.5"
+  }
+}
