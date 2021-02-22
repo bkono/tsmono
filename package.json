@@ -1,25 +1,39 @@
 {
   "name": "root",
   "private": true,
+  "version": "0.0.0",
   "workspaces": [
     "cdk",
     "packages/*",
     "lambdas/*"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "prety-quick --staged"
+    }
+  },
   "scripts": {
-    "docs": "doctoc --title '**Table of content**' README.md",
+    "bootstrap": "lerna bootstrap",
     "build": "lerna run build --stream",
-    "lint": "lerna run lint --stream --parallel",
-    "test": "yarn jest --coverage --passWithNoTests",
+    "bump": "yarn run --silent no-changes || standard-version",
     "clean": "lerna run clean",
+    "docs": "doctoc --title '**Table of content**' README.md",
+    "lint": "lerna run lint --stream --parallel",
+    "no-changes": "(git log --oneline -1 | grep -q \"chore(release):\") && echo \"No changes to release.\"",
     "package": "lerna run package --stream",
-    "pub": "lerna publish"
+    "pub": "lerna publish",
+    "test": "yarn jest --coverage --passWithNoTests"
   },
   "devDependencies": {
     "eslint": "^7.20.0",
+    "husky": "^5.1.0",
     "jest": "^26.6.3",
     "lerna": "^3.22.1",
     "lerna-to-lambda": "^0.3.1",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
+    "standard-version": "^9.1.1",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.5"
   }
 }
